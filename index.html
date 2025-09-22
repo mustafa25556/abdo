@@ -1,0 +1,802 @@
+<img src="./images/abdelrahman-profile.jpg"  <!-- ضع رابط صورتك هنا --><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdelrahman Hamada Muhammad - Pharmacist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 50%, #0369a1 100%);
+        }
+        
+        .soft-gradient {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #bae6fd 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(0);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .skill-bar {
+            height: 10px;
+            background: linear-gradient(90deg, #e2e8f0, #cbd5e1);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #0ea5e9, #0284c7, #0369a1);
+            border-radius: 10px;
+            transition: width 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .section-fade {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .section-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 6px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile-image:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .social-icon {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px) scale(1.1);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .image-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .image-modal.show {
+            opacity: 1;
+        }
+        
+        .modal-image {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 15px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+            transform: scale(0.8);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .image-modal.show .modal-image {
+            transform: scale(1);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #0ea5e9;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .project-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid rgba(226, 232, 240, 0.5);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(14, 165, 233, 0.3);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* يمنع أي شريط تمرير جانبي */
+}
+    </style>
+</head>
+<body
+<!-- Sidebar Navigation -->
+<button id="menuToggle" class="fixed top-0 left-0 z-30 md:hidden bg-white/20 backdrop-blur-md p-3 rounded-lg shadow-lg">
+    <i class="fas fa-bars text-xl text-slate-800"></i>
+</button>
+
+<aside id="sidebar" class="fixed top-0 left-0 h-full w-60 bg-white/10 backdrop-blur-md border-r border-white/20 p-6 transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-40">
+    <h2 class="text-2xl font-bold mb-8 text-slate-800">Menu</h2>
+    <nav class="flex flex-col space-y-6">
+        <a href="#about" class="sidebar-link" onclick="scrollToSection('about')" class="nav-link text-slate-700 hover:text-blue-600 font-medium text-lg transition duration-300">About</a>
+        <a href="#experience" class="sidebar-link" onclick="scrollToSection('experience')" class="nav-link text-slate-700 hover:text-blue-600 font-medium text-lg transition duration-300">Experience</a>
+        <a href="#skills" class="sidebar-link" onclick="scrollToSection('skills')" class="nav-link text-slate-700 hover:text-blue-600 font-medium text-lg transition duration-300">Skills</a>
+        <a href="#education" class="sidebar-link" onclick="scrollToSection('education')" class="nav-link text-slate-700 hover:text-blue-600 font-medium text-lg transition duration-300">Education</a>
+        <a href="#contact" class="sidebar-link" onclick="scrollToSection('contact')" class="nav-link text-slate-700 hover:text-blue-600 font-medium text-lg transition duration-300">Contact</a>
+    </nav>
+</aside>
+
+    <!-- Header Section -->
+    <header class="gradient-bg text-white py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-0"></div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <div class="floating-element mb-8">
+                <!-- ضع رابط صورتك الشخصية هنا -->
+                <!-- مثال: src="./images/profile.jpg" أو src="https://your-website.com/images/profile.jpg" -->
+                <img src="WhatsApp Image 2025-09-17 at 10.41.50_cd5600a9.jpg" 
+                     alt="Abdelrahman Hamada Muhammad" 
+                     class="profile-image mx-auto"
+                     onclick="openImageModal(this.src)"
+                     id="profileImage"
+                     onerror="this.src='https://via.placeholder.com/180x180/0ea5e9/ffffff?text=AH'; this.alt='Profile Picture';">
+                <!-- تم حذف زر تغيير الصورة كما طلبت -->
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent" id="name">Abdelrahman Hamada Muhammad</h1>
+            <p class="text-xl md:text-3xl mb-8 text-blue-100" id="title">Pharmacist</p>
+            
+            <!-- Social Media Icons -->
+            <div class="flex justify-center space-x-6 mb-10">
+                <a href="#" class="social-icon w-12 h-12 rounded-full flex items-center justify-center text-xl" onclick="openSocialMedia('facebook')">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-icon w-12 h-12 rounded-full flex items-center justify-center text-xl" onclick="openSocialMedia('linkedin')">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="social-icon w-12 h-12 rounded-full flex items-center justify-center text-xl" onclick="openSocialMedia('twitter')">
+                    <i class="fab fa-x"></i>
+                </a>
+                <a href="#" class="social-icon w-12 h-12 rounded-full flex items-center justify-center text-xl" onclick="openSocialMedia('instagram')">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-icon w-12 h-12 rounded-full flex items-center justify-center text-xl" onclick="openSocialMedia('whatsapp')">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+            
+            <div class="flex justify-center space-x-6">
+                <button onclick="scrollToSection('contact')" class="btn-primary px-8 py-4 rounded-full font-semibold text-lg">
+                    <i class="fas fa-envelope mr-2"></i>Contact Me
+                </button>
+                <button onclick="downloadCV()" class="glass-effect px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:bg-opacity-20 transition duration-300">
+                    <i class="fas fa-download mr-2"></i>Download CV
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    
+
+    <!-- About Section -->
+    <section id="about" class="py-24 section-fade">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 text-slate-800">About Me</h2>
+            <div class="max-w-6xl mx-auto">
+                <div class="bg-white rounded-2xl shadow-xl p-10 card-hover border border-slate-100">
+                    <p class="text-lg leading-relaxed mb-8 text-slate-600" id="aboutText">
+                        Motivated pharmacist seeking a challenging position where I can leverage my expertise in medication management, patient counseling, and healthcare regulations to deliver high-quality pharmaceutical services, improve patient outcomes, and contribute effectively to the success of the healthcare team.
+                    </p>
+                    <div class="grid md:grid-cols-4 gap-8">
+                        <div class="text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white text-2xl">
+                                🎓
+                            </div>
+                            <p class="font-semibold text-slate-800">Education</p>
+                            <p class="text-slate-600" id="specialization">Bachelor of Pharmacy</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-teal-400 to-teal-600 rounded-full flex items-center justify-center text-white text-2xl">
+                                💊
+                            </div>
+                            <p class="font-semibold text-slate-800">Experience</p>
+                            <p class="text-slate-600">3+ Years</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-full flex items-center justify-center text-white text-2xl">
+                                🏥
+                            </div>
+                            <p class="font-semibold text-slate-800">Current Position</p>
+                            <p class="text-slate-600">Pharmacist in Malawi General Hospital </p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-full flex items-center justify-center text-white text-2xl">
+                                📍
+                            </div>
+                            <p class="font-semibold text-slate-800">Location</p>
+                            <p class="text-slate-600" id="location">Mallawi, El Minya, Egypt</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-24 soft-gradient section-fade">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 text-slate-800">Professional Experience</h2>
+            <div class="max-w-5xl mx-auto">
+                <div class="space-y-8" id="experienceList">
+                    <div class="bg-white rounded-2xl shadow-xl p-8 card-hover border border-slate-100">
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="text-2xl font-bold text-blue-600 mb-2">Pharmacist</h3>
+                                <p class="text-slate-600 text-lg">Malawi General Hospital (Minya)</p>
+                            </div>
+                            <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium">March 2025 - Present</span>
+                        </div>
+                        <p class="text-slate-700 leading-relaxed">Providing pharmacy services, medication therapy management, and collaborating with healthcare professionals to optimize patient care and treatment outcomes.</p>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl shadow-xl p-8 card-hover border border-slate-100">
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="text-2xl font-bold text-blue-600 mb-2">Manager of Pharmacy</h3>
+                                <p class="text-slate-600 text-lg">Saifi Pharmacy, Cairo</p>
+                            </div>
+                            <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium">2023 - 2025</span>
+                        </div>
+                        <ul class="text-slate-700 leading-relaxed space-y-2">
+                            <li>• Dispensing medications and advising patients on appropriate use</li>
+                            <li>• Managing inventory and ensuring proper storage of medications</li>
+                            <li>• Conducting patient consultations and medication use reviews</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl shadow-xl p-8 card-hover border border-slate-100">
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="text-2xl font-bold text-blue-600 mb-2">Pharmacist</h3>
+                                <p class="text-slate-600 text-lg">Saifi Pharmacy, Cairo</p>
+                            </div>
+                            <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium">2022 - 2023</span>
+                        </div>
+                        <p class="text-slate-700 leading-relaxed">Provided pharmaceutical services including medication dispensing, patient counseling, and pharmacy operations management.</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl shadow-xl p-8 card-hover border border-slate-100">
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="text-2xl font-bold text-blue-600 mb-2">Pharmacist Trainee</h3>
+                                <p class="text-slate-600 text-lg">Community Pharmacy, Minya</p>
+                            </div>
+                            <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium">April - September 2021</span>
+                        </div>
+                        <ul class="text-slate-700 leading-relaxed space-y-2">
+                            <li>• Gained hands-on experience in filling prescriptions and advising patients</li>
+                            <li>• Assisted with pharmacy quality assurance activities</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 section-fade">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 text-slate-800">Professional Skills</h2>
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="bg-white rounded-2xl shadow-xl p-8 card-hover border border-slate-100">
+                        <h3 class="text-2xl font-bold mb-8 text-blue-600 flex items-center">
+                            <i class="fas fa-stethoscope mr-3"></i>Clinical & Professional Skills
+                        </h3>
+                        <div class="space-y-6" id="clinicalSkills">
+                            <div>
+                                <div class="flex justify-between mb-3">
+                                    <span class="font-medium text-slate-700">Pharmacology & Pharmacotherapy</span>
+                                    <span class="text-blue-600 font-semibold">95%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 0%" data-width="95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-3">
+                                    <span class="font-medium text-slate-700">Patient Counseling</span>
+                                    <span class="text-blue-600 font-semibold">92%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 0%" data-width="92%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-3">
+                                    <span class="font-medium text-slate-700">Prescription Accuracy</span>
+                                    <span class="text-blue-600 font-semibold">98%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 0%" data-width="98%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-3">
+                                    <span class="font-medium text-slate-700">Healthcare Compliance</span>
+                                    <span class="text-blue-600 font-semibold">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 0%" data-width="90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl shadow-xl p-8 card-hover border border-slate-100">
+                        <h3 class="text-2xl font-bold mb-8 text-blue-600 flex items-center">
+                            <i class="fas fa-cogs mr-3"></i>Technical & Management Skills
+                        </h3>
+                        <div class="space-y-6" id="managementSkills">
+                            <div>
+                                <div class="flex justify-between mb-3">
+                                    <span class="font-medium text-slate-700">Inventory Management</span>
+                                    <span class="text-blue-600 font-semibold">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 0%" data-width="88%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-3">
+                                    <span class="font-medium text-slate-700">ERP & HIS Systems</span>
+                                    <span class="text-blue-600 font-semibold">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 0%" data-width="85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-3">
+                                    <span class="font-medium text-slate-700">Microsoft Office Suite</span>
+                                    <span class="text-blue-600 font-semibold">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 0%" data-width="90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-3">
+                                    <span class="font-medium text-slate-700">Training & Development</span>
+                                    <span class="text-blue-600 font-semibold">82%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 0%" data-width="82%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Languages & Additional Skills -->
+                <div class="grid md:grid-cols-2 gap-12 mt-12">
+                    <div class="bg-white rounded-2xl shadow-xl p-8 card-hover border border-slate-100">
+                        <h3 class="text-2xl font-bold mb-8 text-blue-600 flex items-center">
+                            <i class="fas fa-language mr-3"></i>Languages
+                        </h3>
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between mb-3">
+                                    <span class="font-medium text-slate-700">Arabic (Native)</span>
+                                    <span class="text-blue-600 font-semibold">100%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 0%" data-width="100%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-3">
+                                    <span class="font-medium text-slate-700">English (Very Good)</span>
+                                    <span class="text-blue-600 font-semibold">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 0%" data-width="85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl shadow-xl p-8 card-hover border border-slate-100">
+                        <h3 class="text-2xl font-bold mb-8 text-blue-600 flex items-center">
+                            <i class="fas fa-plus-circle mr-3"></i>Additional Skills
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                <span class="text-slate-700">Scientific Subject Explanation (Physics, Biology, Chemistry)</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                <span class="text-slate-700">Active Substance Analysis</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                <span class="text-slate-700">Medical & Pharmaceutical Research</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                <span class="text-slate-700">Quality Assurance Programs</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-24 soft-gradient section-fade">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 text-slate-800">Education</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-2xl shadow-xl p-10 card-hover border border-slate-100">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white text-2xl mr-6">
+                            🎓
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-blue-600">Bachelor of Pharmacy</h3>
+                            <p class="text-slate-600 text-lg">Misr University for Science and Technology</p>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <p class="text-slate-700 mb-2"><strong>Graduation Year:</strong> 2022</p>
+                            <p class="text-slate-700 mb-2"><strong>GPA:</strong> 3.2</p>
+                            <p class="text-slate-700"><strong>Grade:</strong> Very Good with Honors</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-slate-800 mb-3">Key Achievements:</h4>
+                            <ul class="text-slate-700 space-y-1">
+                                <li>• Graduated with Honors</li>
+                                <li>• Strong foundation in pharmaceutical sciences</li>
+                                <li>• Comprehensive clinical training</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 section-fade">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 text-slate-800">Get In Touch</h2>
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="bg-white rounded-2xl shadow-xl p-10 card-hover border border-slate-100">
+                        <h3 class="text-2xl font-bold mb-8 text-slate-800">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white mr-4">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-slate-800">Email</p>
+                                    <p class="text-slate-600" id="email">abdohmada293@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gradient-to-br from-teal-400 to-teal-600 rounded-full flex items-center justify-center text-white mr-4">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-slate-800">Phone</p>
+                                    <p class="text-slate-600" id="phone">(+2) 01060396657</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-full flex items-center justify-center text-white mr-4">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-slate-800">Address</p>
+                                    <p class="text-slate-600">Mallawi - El Minya - Egypt</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl shadow-xl p-10 card-hover border border-slate-100">
+                        <h3 class="text-2xl font-bold mb-8 text-slate-800">Send Message</h3>
+                        <form id="contactForm" onsubmit="sendMessage(event)">
+                            <div class="mb-6">
+                                <input type="text" id="senderName" placeholder="Your Name" required class="w-full px-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition duration-300">
+                            </div>
+                            <div class="mb-6">
+                                <input type="email" id="senderEmail" placeholder="Your Email" required class="w-full px-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition duration-300">
+                            </div>
+                            <div class="mb-8">
+                                <textarea id="message" placeholder="Your Message" rows="4" required class="w-full px-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition duration-300"></textarea>
+                            </div>
+                            <button type="submit" class="w-full btn-primary text-white py-3 rounded-lg font-semibold text-lg">
+                                <i class="fas fa-paper-plane mr-2"></i>Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-lg">&copy; 2024 Abdelrahman Hamada Muhammad - Pharmacist. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal" onclick="closeImageModal()">
+        <img id="modalImage" class="modal-image" src="" alt="Profile Picture">
+        <button onclick="closeImageModal()" class="absolute top-6 right-6 text-white text-4xl hover:text-gray-300 transition duration-300">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    
+
+    <script>
+        // Smooth scrolling
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Animate sections on scroll
+        function animateOnScroll() {
+            const sections = document.querySelectorAll('.section-fade');
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.8) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+
+        // Animate skill bars
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const rect = bar.getBoundingClientRect();
+                if (rect.top < window.innerHeight && !bar.classList.contains('animated')) {
+                    const width = bar.getAttribute('data-width');
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 300);
+                    bar.classList.add('animated');
+                }
+            });
+        }
+
+        // Contact form submission
+        function sendMessage(event) {
+            event.preventDefault();
+            const name = document.getElementById('senderName').value;
+            const email = document.getElementById('senderEmail').value;
+            const message = document.getElementById('message').value;
+            
+            // Create mailto link
+            const subject = encodeURIComponent(`Message from ${name} via Portfolio Website`);
+            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+            const mailtoLink = `mailto:abdohmada293@gmail.com?subject=${subject}&body=${body}`;
+            
+            window.open(mailtoLink, '_blank');
+            
+            alert(`Thank you ${name}! Your message has been prepared. Your email client should open now.`);
+            document.getElementById('contactForm').reset();
+        }
+
+        // Download CV function
+        function downloadCV() {
+            // ضع رابط ملف السيرة الذاتية هنا
+            // مثال: const cvUrl = 'https://your-website.com/cv/Abdelrahman_CV.pdf';
+            // أو ضع الملف في نفس المجلد: const cvUrl = './Abdelrahman_CV.pdf';
+            
+            const cvUrl = './Abdelrahman Hamada- CV.pdf'; // ضع هنا مسار ملف السيرة الذاتية
+            
+            // إنشاء رابط تحميل
+            const link = document.createElement('a');
+            link.href = cvUrl;
+            link.download = 'Abdelrahman_Hamada_CV.pdf'; // اسم الملف عند التحميل
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Social media functions
+        function openSocialMedia(platform) {
+            // ضع روابط حساباتك على مواقع التواصل الاجتماعي هنا
+            const socialLinks = {
+                'facebook': 'https://www.facebook.com/share/1FX6cAiZt6/',     // ضع رابط حسابك على فيسبوك
+                'linkedin': 'https://linkedin.com/in/your-profile',  // ضع رابط حسابك على لينكد إن
+                'twitter': 'https://x.com/AbdoHmada14/',       // ضع رابط حسابك على تويتر
+                'instagram': 'https://www.instagram.com/abdohmada293?igsh=aHV5ZnZyMnRxMzFi/',   // ضع رابط حسابك على إنستجرام
+                'whatsapp': `https://wa.me/201060396657`             // رقم الواتساب (تم إضافته بالفعل)
+            };
+            
+            if (socialLinks[platform]) {
+                window.open(socialLinks[platform], '_blank', 'noopener,noreferrer');
+            }
+        }
+
+        // Image modal functions
+        function openImageModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            document.getElementById('modalImage').src = imageSrc;
+            modal.style.display = 'flex';
+            setTimeout(() => modal.classList.add('show'), 10);
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('show');
+            setTimeout(() => modal.style.display = 'none', 300);
+        }
+
+        // تم حذف وظيفة تغيير الصورة كما طلبت
+
+        // Edit modal functions
+        function openEditModal() {
+            document.getElementById('editName').value = document.getElementById('name').textContent;
+            document.getElementById('editTitle').value = document.getElementById('title').textContent;
+            document.getElementById('editEmail').value = document.getElementById('email').textContent;
+            document.getElementById('editPhone').value = document.getElementById('phone').textContent;
+            document.getElementById('editLocation').value = document.getElementById('location').textContent;
+            document.getElementById('editAbout').value = document.getElementById('aboutText').textContent.trim();
+            
+            document.getElementById('editModal').classList.remove('hidden');
+            document.getElementById('editModal').classList.add('flex');
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal').classList.add('hidden');
+            document.getElementById('editModal').classList.remove('flex');
+        }
+
+        function saveChanges() {
+            document.getElementById('name').textContent = document.getElementById('editName').value;
+            document.getElementById('title').textContent = document.getElementById('editTitle').value;
+            document.getElementById('email').textContent = document.getElementById('editEmail').value;
+            document.getElementById('phone').textContent = document.getElementById('editPhone').value;
+            document.getElementById('location').textContent = document.getElementById('editLocation').value;
+            document.getElementById('aboutText').textContent = document.getElementById('editAbout').value;
+            
+            closeEditModal();
+            alert('Changes saved successfully!');
+        }
+
+        
+// Sidebar toggle
+const menuToggle = document.getElementById('menuToggle');
+const sidebar = document.getElementById('sidebar');
+menuToggle.addEventListener('click', () => {
+    if (sidebar.classList.contains('-translate-x-full')) {
+        sidebar.classList.remove('-translate-x-full');
+    } else {
+        sidebar.classList.add('-translate-x-full');
+    }
+});
+
+        
+// Close sidebar on link click (mobile only)
+document.querySelectorAll('.sidebar-link').forEach(link => {
+    link.addEventListener('click', () => {
+        if (window.innerWidth < 768) { // md breakpoint
+            sidebar.classList.add('-translate-x-full');
+        }
+    });
+});
+
+        // Event listeners
+        window.addEventListener('scroll', () => {
+            animateOnScroll();
+            animateSkillBars();
+        });
+
+        // Initial animations
+        document.addEventListener('DOMContentLoaded', () => {
+            animateOnScroll();
+            animateSkillBars();
+        });
+    </script>
+</body>
+</html>
